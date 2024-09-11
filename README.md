@@ -2,7 +2,7 @@
 
 ## Project Overview 
 
-This project focuses on improving **EEG-based seizure detection** in children using a combination of **computational** and **machine learning methods**. Specifically, we apply **Convolutional Neural Networks (CNNs)** to analyze EEG data and detect seizures more accurately. 
+This project focuses on improving **EEG-based seizure detection** in children using a combination of **computational** and **machine learning methods**. Specifically, I apply **Convolutional Neural Networks (CNNs)** to analyze EEG data and detect seizures more accurately. 
 
 ## Project Motivation
 
