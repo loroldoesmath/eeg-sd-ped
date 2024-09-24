@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 
 # List of EEG URLs from Physionet MIT 
 
-# Patient 01 - 
+# Need to find a more efficient way to visualize this data
+
+# Patient 01 - urls
 eeg_urls01 = [
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_01.edf",
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_02.edf",
