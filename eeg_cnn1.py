@@ -13,6 +13,9 @@ with open ('data_chunk.edf', 'wb') as file:
             file.write(chunk)
 
 # Handle missing values?
+# q - are there missing values to populate?
+
+
 
 # Normalize/standardize data
 
