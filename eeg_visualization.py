@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 # Patient 01 - urls
 eeg_urls01 = [
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_01.edf",
+    '''
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_02.edf",
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_03.edf",
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_03.edf.seizures",
@@ -59,6 +60,7 @@ eeg_urls01 = [
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_42.edf",
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_43.edf",
     "https://archive.physionet.org/physiobank/database/chbmit/chb01/chb01_46.edf"
+    '''
 ]
 
 # Directory to store downloaded .edf files
@@ -77,10 +79,10 @@ def download_file(url, save_path):
 
 # Process each EEG file
 for i, url in enumerate(eeg_urls01):
-    print(f"\nProcessing EEG file {i+1}/{len(eeg_urls)}: {url}")
+    print(f"\nProcessing EEG file {i+1}/{len(eeg_urls01)}: {url}")
 
     # Define the file path
-    file_name = os.path.basename(url01)
+    file_name = os.path.basename(eeg_urls01[i])
     file_path = os.path.join(download_dir, file_name)
 
     # Check if the file has already been downloaded
