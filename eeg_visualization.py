@@ -114,3 +114,5 @@ for i, url in enumerate(eeg_urls01):
         print(f"Error processing {file_name}: {e}")
 
 print("Processing completed!")
+
+# Need to create flattened 2D EEG image from raw signal --> CNN
