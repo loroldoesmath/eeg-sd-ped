@@ -13,7 +13,9 @@ I'm utilizing EEG data from the **CHB-MIT Scalp EEG Database**, which contains r
 
 [CHB-MIT Scalp EEG Database](https://archive.physionet.org/physiobank/database/chbmit/chb01/)
 
-The EEG data is in **.edf format** and contains multiple recordings from various patients, including those with seizures.
+The EEG data is in **.edf format** and contains multiple recordings from various patients, including those with seizures. 
+
+I convert the EEG data to a CSV file by sequencing parametric data.
 
 ## Files and Structure
 - **`eeg_cnn1.py`**: This Python script handles the streaming of the `.edf` EEG data and defines the structural layout of the **Convolutional Neural Network (CNN)** model. The model is trained to classify seizure vs. non-seizure events in the provided EEG data.
