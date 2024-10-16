@@ -1,0 +1,12 @@
+# Literature Review
+
+This file contains a table of key papers, their authors or institutions, key takeaways, and current status.
+
+The data is automatically updated from a Google Sheet.
+
+| Paper                                             | Author(s) or Institution  | Key Takeaways                                                     | Status       |
+|---------------------------------------------------|---------------------------|-------------------------------------------------------------------|--------------|
+| Machine learning techniques for EEG analysis      |                           | Overview of EEG signal acquisition and classification techniques   | In progress  |
+| Review on mathematical modeling of EEGs           |                           | Insights into the mathematical models used in EEG signal analysis  | Completed    |
+| Empowering CS Students in EEG Analysis            |                           | Discussion of ML algorithms for EEG datasets                      | Not started  |
+| ------------------------------------------------- | ------------------------- | --------------------------------------------------                | -------------|
