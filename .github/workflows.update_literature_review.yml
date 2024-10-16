@@ -11,25 +11,25 @@ jobs:
     runs-on: ubuntu-latest  # Specifies the environment where the job will run
 
     steps:
-      # Step 1: Checkout the repository code so the workflow has access to your files
+      # Checkout the repository code 
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Set up a Python environment for running your Python script
+      # Set up a Python environment
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'  # Uses Python version 3.x
 
-      # Step 3: Install necessary dependencies (e.g., requests library for fetching Google Sheets data)
+      # Install necessary dependencies -- requests library for fetching Google Sheets data
       - name: Install requests
         run: pip install requests
 
-      # Step 4: Run the Python script that updates the 'literature-review' file
+      # Run the Python script that updates the 'literature-review' file
       - name: Run Python script
-        run: python update_readme.py  # Update the filename here if needed
+        run: python literature-review-update-script.py  
 
-      # Step 5: Commit and push the updated 'literature-review' file back to the repository
+      # Commit and push the updated 'literature-review' file back to the repository
       - name: Commit and push changes
         run: |
           git config --global user.name 'GitHub Actions'  # Set Git author name
