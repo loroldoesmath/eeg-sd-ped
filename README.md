@@ -41,5 +41,4 @@ The EEG data is in **.edf format** and contains multiple recordings from various
 - **Real-time Monitoring**: Develop a real-time monitoring system for continuous EEG streaming and seizure detection.
 
 ## Acknowledgments
-This project was made possible thanks to the **CHB-MIT Scalp EEG Database** and **PhysioNet** for providing high-quality data. Shout out to all researchers making their data publically available in the hopes of saving lives.
 This project was inspired by Elianna, who has given me so much hope for the future of this world just by being born.
