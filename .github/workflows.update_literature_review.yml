@@ -37,3 +37,5 @@ jobs:
           git add literature-review  # Stage the updated file
           git commit -m 'Update literature-review with latest table'  # Commit the changes
           git push  # Push the changes back to the repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GITHUB_TOKEN to authenticate the push
