@@ -1,4 +1,4 @@
-import requests
+import requests 
 import time
 import pandas as pd
 
@@ -7,11 +7,13 @@ def fetch_articles(query):
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
     params = {
         'query': query,
+        'fields': 'title,abstract,year,paperId',  # Explicitly request title, abstract, year, and paperId
         'offset': 0,
         'limit': 100  # Fetch in batches of 100
     }
     
     articles = []
+    seen_ids = set()  # Track article IDs to avoid duplicates
     
     while len(articles) < 500:  # Stop when we have 500 articles
         try:
@@ -19,16 +21,24 @@ def fetch_articles(query):
             response.raise_for_status()  # Raise an error for bad responses
             
             data = response.json()
-            articles.extend(data.get('data', []))  # Safely get 'data'
+            current_batch = data.get('data', [])  # Get the current batch of articles
+
+            # Filter out duplicate articles based on article ID
+            new_articles = [article for article in current_batch if article['paperId'] not in seen_ids]
             
-            # Debug: Print the number of articles fetched in this batch
-            print(f"Fetched {len(data.get('data', []))} articles.")
+            # Add new articles to the list and update the seen IDs
+            articles.extend(new_articles)
+            seen_ids.update(article['paperId'] for article in new_articles)
+
+            # Print the first few articles to check the structure (debugging step)
+            if len(articles) > 0:
+                print("Sample articles:", articles[:5])
             
-            # Break if there are no more results or if we've reached 500 articles
-            if len(data['data']) < params['limit'] or len(articles) >= 500:
+            # Stop if we didn't get a full batch or if we've reached 500 articles
+            if len(current_batch) < params['limit'] or len(articles) >= 500:
                 break
-            
-            params['offset'] += params['limit']
+
+            params['offset'] += params['limit']  # Increment the offset to get the next batch
             time.sleep(1)  # Delay between requests to avoid rate limits
         
         except requests.exceptions.HTTPError as e:
@@ -48,7 +58,7 @@ def fetch_articles(query):
 techniques = [
     'Support Vector Machine', 'SVM', 'neural network', 'RNN', 'CNN', 
     'ANN', 'k-nearest neighbor', 'KNN', 'naive bayes', 'linear discriminant analysis', 
-    'machine learning', 'seizure detection'
+    'machine learning', 'seizure detection', 'linear regression'
 ]
 
 def analyze_articles(articles):
@@ -62,10 +72,18 @@ def analyze_articles(articles):
     print(f"Total articles found: {total_articles}")
     
     # Count occurrences of each technique in the titles and abstracts
-    for paper in articles:
+    for idx, paper in enumerate(articles):
         title = paper.get('title', '').lower()
-        abstract = paper.get('abstract', '').lower()  # Use lowercase for case-insensitive match
+        abstract = paper.get('abstract', '').lower() if paper.get('abstract') else None  # Handle empty abstracts
         year = paper.get('year', None)  # Get the publication year
+        
+        # Debug: Print the current article being analyzed
+        print(f"Article {idx+1}: title='{title}', year={year}, abstract='{abstract[:100] if abstract else 'No Abstract found'}'")
+
+        # Check for missing abstract
+        if abstract is None:
+            print("No Abstract found for article:", title)
+            continue  # Skip articles without abstracts
 
         # Filter for articles published from 2021 to 2024 with specific words in the title
         if year and 2021 <= year <= 2024 and all(word in title for word in ['machine', 'learning', 'seizure']):
