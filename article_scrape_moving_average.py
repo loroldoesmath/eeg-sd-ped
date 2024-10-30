@@ -92,7 +92,7 @@ def main():
 
     moving_averages = compute_moving_average(results, window_size)
 
-    # Display final moving averages
+    # Final moving averages
     for i, avg in enumerate(moving_averages, start=1):
         print(f"Moving average for batch {i}: {avg}")
 
