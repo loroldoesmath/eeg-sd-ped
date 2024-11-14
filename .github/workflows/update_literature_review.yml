@@ -15,27 +15,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Set up a Python environment
+      # Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'  # Uses Python version 3.x
 
-      # Install necessary dependencies -- requests library for fetching Google Sheets data
+      # Install requests library for fetching Google Sheets data
       - name: Install requests
         run: pip install requests
 
-      # Run the Python script that updates the 'literature-review' file
+      # Run script that updates the 'literature-review' file
       - name: Run Python script
         run: python literature-review-update-script.py  
 
-      # Commit and push the updated 'literature-review' file back to the repository
       - name: Commit and push changes
         run: |
-          git config --global user.name 'GitHub Actions'  # Set Git author name
-          git config --global user.email 'actions@github.com'  # Set Git author email
-          git add literature-review  # Stage the updated file
-          git commit -m 'Update literature-review with latest table'  # Commit the changes
-          git push  # Push the changes back to the repository
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add literature-review
+          git commit -m 'Update literature-review with latest table' || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GITHUB_TOKEN to authenticate the push
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
