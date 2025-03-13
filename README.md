@@ -41,4 +41,4 @@ The EEG data is in **.edf format** and contains multiple recordings from various
 - **Real-time Monitoring**: Develop a real-time monitoring system for continuous EEG streaming and seizure detection.
 
 ## Acknowledgments
-This project was inspired by Elianna, who has given me so much hope for the future of this world just by being born.
+This project is dedicated to Elianna, who has given me so much hope for the future of this world just by being born.
